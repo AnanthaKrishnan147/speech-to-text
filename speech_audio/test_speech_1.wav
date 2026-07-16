@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sample files library</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7092027-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-7092027-9');
+</script>
+<link rel="alternate" hreflang="en" href="https://samplelib.com/" />
+<link rel="alternate" hreflang="ru" href="https://samplelib.com/ru/" />
+<link rel="alternate" hreflang="zh" href="https://samplelib.com/zh/" />
+<link rel="alternate" hreflang="es" href="https://samplelib.com/es/" />
+<link rel="alternate" hreflang="pt" href="https://samplelib.com/pt/" />
+
+<link rel="alternate" hreflang="x-default" href="https://samplelib.com/" />
+
+<meta name="description" content="All files presented on the project were created by the authors of this project. Provided free of charge and without license restrictions. Everything is downloaded from a CDN, so it should be very fast from anywhere in the world">
+<meta name="keywords" content="sample files, test files, free test files, sample file download, test file library, sample files for testing, free sample files, test file download">
+<link rel="canonical" href="https://samplelib.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Samplelib",
+  "url": "https://samplelib.com",
+  "description": "All files presented on the project were created by the authors of this project. Provided free of charge and without license restrictions. Everything is downloaded from a CDN, so it should be very fast from anywhere in the world",
+  "inLanguage": ["en", "ru", "es", "zh"]
+}
+</script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="/">samplelib</a>
+            <div class="language-toggle" style="z-index: 10000;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><img src="/assets/img/lang/en-flag-icon-32.png"></a>
+                        <div class="dropdown-menu position-absolute" role="menu"><a class="dropdown-item" href="/" role="presentation"><img src="/assets/img/lang/en-flag-icon-32.png">&nbsp;english</a><a class="dropdown-item" href="/es/" role="presentation"><img src="/assets/img/lang/es-flag-icon-32.png">&nbsp;Español</a><a class="dropdown-item" href="/pt/" role="presentation"><img src="/assets/img/lang/pt-flag-icon-32.png">&nbsp;Português</a><a class="dropdown-item" href="/zh/" role="presentation"><img src="/assets/img/lang/zh-flag-icon-32.png">&nbsp;中国人</a><a class="dropdown-item" href="/ru/" role="presentation"><img src="/assets/img/lang/ru-flag-icon-32.png">&nbsp;русский</a></div>
+                    </li>
+                </ul>
+            </div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F5BC;&#xFE0F; images</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-jpeg.html">jpeg</a><a class="dropdown-item" href="/sample-png.html">png</a><a class="dropdown-item" href="/sample-svg.html">svg</a><a class="dropdown-item" href="/sample-gif.html">gif</a><a class="dropdown-item" href="/sample-webp.html">webp</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F3B5; audio&nbsp;</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-mp3.html">mp3</a><a class="dropdown-item" href="/sample-wav.html">wav</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F3AC; video</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-mp4.html">mp4</a><a class="dropdown-item" href="/sample-webm.html">webm</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F4E2; ads</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-ad-160x600.html">160x600</a><a class="dropdown-item" href="/sample-ad-240x400.html">240x400</a><a class="dropdown-item" href="/sample-ad-300x50.html">300x50</a><a class="dropdown-item" href="/sample-ad-300x250.html">300x250</a><a class="dropdown-item" href="/sample-ad-320x50.html">320x50</a><a class="dropdown-item" href="/sample-ad-468x60.html">468x60</a><a class="dropdown-item" href="/sample-ad-728x90.html">728x90</a><a class="dropdown-item" href="/sample-ad-970x90.html">970x90</a><a class="dropdown-item" href="/sample-ad-970x250.html">970x250</a><a class="dropdown-item" href="/sample-html5-banner.html">HTML5</a><div class="dropdown-divider"></div><a class="dropdown-item" href="/sample-vast.html">VAST</a><a class="dropdown-item" href="/sample-openrtb.html">OpenRTB</a><a class="dropdown-item" href="/sample-ads-txt.html">ads.txt</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F4C4; docs</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-xls.html">Excel</a><a class="dropdown-item" href="/sample-docx.html">DOCX</a><a class="dropdown-item" href="/sample-ppt.html">PPT</a><a class="dropdown-item" href="/sample-pdf.html">PDF</a><a class="dropdown-item" href="/sample-json.html">JSON</a><a class="dropdown-item" href="/sample-csv.html">CSV</a><a class="dropdown-item" href="/sample-xml.html">XML</a><a class="dropdown-item" href="/sample-html.html">HTML</a><a class="dropdown-item" href="/sample-zip.html">ZIP</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">&#x1F6E0;&#xFE0F; tools</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="/sample-lipsum.html">Lorem ipsum</a><a class="dropdown-item" href="/sample-base64.html">Base64</a><a class="dropdown-item" href="/sample-uuid.html">UUID</a><a class="dropdown-item" href="/sample-jwt.html">JWT</a><a class="dropdown-item" href="/sample-hash.html">Hash</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page landing-page">
+        <section class="clean-block features">
+            <div class="container">
+                <div class="block-heading">
+                    <h1 class="text-info">Sample files library</h1>
+                    <p>A completely free library of test files available to download without licensing restrictions. The files are designed for developers, designers, testers, advertisers, and anyone else who needs demos and testing files.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 feature-box"><i class="icon-picture icon"></i>
+                        <h4>Images</h4>
+                        <p>Useful images if you need to fill a prototype website with at least some content, or you need a sample picture to test the software. We have sample files available in different formats, for example:  <a href="/sample-jpeg.html">JPEG</a>, <a href="/sample-png.html">PNG</a>, <a href="/sample-svg.html">SVG</a>, <a href="/sample-gif.html">GIF</a>, <a href="/sample-webp.html">WebP</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-music-tone-alt icon"></i>
+                        <h4>Audio</h4>
+                        <p>Samples of music of various lengths and sizes for the development of mobile applications, websites, or audio advertising testing. Including the author's melodies, you won't find them anywhere else :-) Formats:  <a href="/sample-mp3.html">MP3</a>, <a href="/sample-wav.html">WAV</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="far fa-play-circle icon"></i>
+                        <h4>Video</h4>
+                        <p>A collection of sample videos of varying lengths and sizes to test everything related to video. Formats:&nbsp;<a href="/sample-mp4.html">MP4</a>, <a href="/sample-webm.html">WEBM</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="fab fa-buysellads icon"></i>
+                        <h4>Ad formats</h4>
+                        <p>A set of multi-coloured sample banners for testing advertising campaigns. We've got banners for most popular IAB sizes: &nbsp;<a href="/sample-ad-728x90.html">728x90</a>,&nbsp;<a href="/sample-ad-300x250.html">300x250</a>, <a href="/sample-ad-300x50.html">300x50</a>, <a href="/sample-ad-320x50.html">320x50</a>, <a href="/sample-ad-970x250.html">970x250</a>, <a href="/sample-ad-970x90.html">970x90</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-feed icon"></i>
+                        <h4>AdTech & programmatic</h4>
+                        <p>Ready-made files matching IAB Tech Lab specs for debugging video players, SSP/DSP, header bidding and ad servers:  <a href="/sample-vast.html">VAST</a>, <a href="/sample-openrtb.html">OpenRTB</a>, <a href="/sample-ads-txt.html">ads.txt</a>, <a href="/sample-html5-banner.html">HTML5</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon ion-document-text icon"></i>
+                        <h4>Documents</h4>
+                        <p>A collection of different types of documents that are difficult to attribute to other sections. Formats:  <a href="/sample-xls.html">XLS</a>, <a href="/sample-docx.html">DOCX</a>, <a href="/sample-ppt.html">PPT</a>, <a href="/sample-pdf.html">PDF</a>, <a href="/sample-json.html">JSON</a>, <a href="/sample-csv.html">CSV</a>, <a href="/sample-xml.html">XML</a>, <a href="/sample-html.html">HTML</a>, <a href="/sample-zip.html">ZIP</a></p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="material-icons icon">build</i>
+                        <h4>Tools</h4>
+                        <p>Generators and encoders right in your browser — nothing is uploaded to the server. Available:  <a href="/sample-lipsum.html">lorem ipsum</a>, <a href="/sample-base64.html">base64</a>, <a href="/sample-uuid.html">uuid</a>, <a href="/sample-jwt.html">jwt</a>, <a href="/sample-hash.html">hash</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Home</a></li>
+                <li class="list-inline-item"><a href="/license.html">License</a></li>
+                <li class="list-inline-item"><a href="/terms.html">Terms</a></li>
+                <li class="list-inline-item"><a href="/about.html">About</a></li>
+            </ul>
+            <div class="social-icons" style="height: 120px;padding: 40px 0px;"><a href="https://twitter.com/samplelib" target="_blank"></a><a href="https://github.com/ffeast/samplelib" target="_blank"><i class="icon ion-social-github"></i></a><a href="http://youtube.com/@samplelibcom" target="_blank"><i class="icon ion-social-youtube"></i></a></div>
+        </footer>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60886b17642d724f"></script>
+    <script src="/assets/js/script.min.js"></script>
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('samplelib', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+
+</html>
