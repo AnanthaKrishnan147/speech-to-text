@@ -1,1 +1,5 @@
 local_nemo/
+*.env
+tmp/
+ht_test.py
+.env

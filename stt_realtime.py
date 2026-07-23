@@ -35,6 +35,28 @@ def log_timing_debug(utt_id, transcript, lang, confidence, delay_sec, tag=""):
             f.write(line)
 
 # ---------------------------------------------------------------
+# Transcript callback hook
+# ---------------------------------------------------------------
+# Any external module (e.g. an LLM bridge) can register a function here to be
+# notified every time a FINAL transcript is produced. The callback receives:
+#   (utt_id, transcript, lang, confidence, speech_end_time)
+# speech_end_time is a time.time() timestamp marking the moment the VAD judged
+# the user had stopped speaking (same reference point used for timing_debug.log).
+TRANSCRIPT_CALLBACKS = []
+
+def register_transcript_callback(fn):
+    """Register a callable to be invoked on every finalized transcript."""
+    TRANSCRIPT_CALLBACKS.append(fn)
+
+def _emit_transcript(utt_id, transcript, lang, confidence, speech_end_time):
+    for cb in TRANSCRIPT_CALLBACKS:
+        try:
+            cb(utt_id, transcript, lang, confidence, speech_end_time)
+        except Exception:
+            print("[transcript callback error]")
+            traceback.print_exc()
+
+# ---------------------------------------------------------------
 # PyTorch JIT & Device Configuration
 # ---------------------------------------------------------------
 torch._C._jit_set_profiling_executor(False)
@@ -129,7 +151,7 @@ def classify_language(wav_tensor: torch.Tensor):
 
     # --- Fallback: Faster-Whisper's language detector ---
     audio_np = wav_tensor.squeeze(0).cpu().numpy().astype(np.float32)
-    
+
     try:
         # faster-whisper returns the top language, top probability, and a list of all language probabilities
         _, _, all_language_probs = whisper_model.detect_language(audio_np)
@@ -367,7 +389,7 @@ class LiveTranscriber:
                 self.candidate_pending = True
                 self.silence_since_candidate_ms = self.silence_ms
                 snapshot = np.concatenate(self.speech_frames)
-                
+
                 speech_end_time = time.time() - (self.silence_ms / 1000.0)
                 self.infer_q.put(("candidate", self.utterance_id, snapshot, speech_end_time))
 
@@ -384,7 +406,7 @@ class LiveTranscriber:
         """Must be called with self._lock held."""
         audio = np.concatenate(self.speech_frames) if self.speech_frames else np.zeros(0, dtype=np.float32)
         finished_id = self.utterance_id
-        
+
         speech_end_time = time.time() - (self.silence_ms / 1000.0)
 
         cached = self.candidate_result_cache
@@ -407,6 +429,7 @@ class LiveTranscriber:
             _, transcript, lang, confidence = cached
             self.chat_history = self.chat_history + [{"role": "user", "content": transcript}]
             print(f"[{lang.upper()} {confidence:.0f}%] FORCED FINAL (reused candidate, max hold): {transcript}")
+            _emit_transcript(finished_id, transcript, lang, confidence, speech_end_time)
         elif len(audio) > 0:
             self.infer_q.put(("final", finished_id, audio, speech_end_time))
 
@@ -428,11 +451,11 @@ class LiveTranscriber:
                 return
 
         transcript, detected_lang, confidence = self._transcribe(audio_np)
-        
+
         delay_sec = time.time() - speech_end_time
         if transcript:
             log_timing_debug(utt_id, transcript, detected_lang, confidence, delay_sec, tag="[Candidate]")
-            
+
         if not transcript:
             return
 
@@ -450,21 +473,23 @@ class LiveTranscriber:
                 self.chat_history = provisional_history
                 self._finalize_locked()
                 print(f"[{detected_lang.upper()} {confidence:.0f}%] FINAL: {transcript}")
+                _emit_transcript(utt_id, transcript, detected_lang, confidence, speech_end_time)
 
     def _transcribe_and_emit(self, utt_id: int, audio_np: np.ndarray, forced: bool, speech_end_time: float):
         transcript, detected_lang, confidence = self._transcribe(audio_np)
-        
+
         delay_sec = time.time() - speech_end_time
+        tag = "[Forced Final]" if forced else "[Final]"
         if transcript:
-            tag = "[Forced Final]" if forced else "[Final]"
             log_timing_debug(utt_id, transcript, detected_lang, confidence, delay_sec, tag=tag)
 
         if not transcript:
             return
-        
+
         with self._lock:
             self.chat_history = self.chat_history + [{"role": "user", "content": transcript}]
         print(f"[{detected_lang.upper()} {confidence:.0f}%] {tag}: {transcript}")
+        _emit_transcript(utt_id, transcript, detected_lang, confidence, speech_end_time)
 
     def _transcribe(self, audio_np: np.ndarray):
         tensor = torch.from_numpy(audio_np).unsqueeze(0).to(device)
@@ -488,32 +513,49 @@ class LiveTranscriber:
         transcript = transcript.strip()
         return transcript, detected_lang, confidence
 
-transcriber = LiveTranscriber()
-print("Transcriber ready — waiting for audio from the mic.")
 
 # ---------------------------------------------------------------
 # Audio Input Stream
 # ---------------------------------------------------------------
 BLOCK_SIZE = 2048
 
-def audio_callback(indata, frames, time_info, status):
-    if status:
-        pass
-    try:
-        transcriber.push_pcm(indata[:, 0].copy())
-    except Exception:
-        pass 
+transcriber = None
+stream = None
 
-stream = sd.InputStream(
-    samplerate=SAMPLE_RATE,
-    channels=1,
-    blocksize=BLOCK_SIZE,
-    dtype="float32",
-    callback=audio_callback,
-)
 
-print("Listening... press Enter to stop.")
-stream.start()
-input()
-stream.stop()
-stream.close()
+def start_listening():
+    """
+    Boots the LiveTranscriber + microphone input stream and blocks until the
+    user presses Enter. Safe to call from an importing module (e.g. an LLM
+    bridge) — nothing here runs automatically just from `import stt_realtime`.
+    """
+    global transcriber, stream
+
+    transcriber = LiveTranscriber()
+    print("Transcriber ready — waiting for audio from the mic.")
+
+    def audio_callback(indata, frames, time_info, status):
+        if status:
+            pass
+        try:
+            transcriber.push_pcm(indata[:, 0].copy())
+        except Exception:
+            pass
+
+    stream = sd.InputStream(
+        samplerate=SAMPLE_RATE,
+        channels=1,
+        blocksize=BLOCK_SIZE,
+        dtype="float32",
+        callback=audio_callback,
+    )
+
+    print("Listening... press Enter to stop.")
+    stream.start()
+    input()
+    stream.stop()
+    stream.close()
+
+
+if __name__ == "__main__":
+    start_listening()
